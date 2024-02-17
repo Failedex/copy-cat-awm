@@ -1,0 +1,120 @@
+(deflisten workspacejson 
+  :initial '[{"focused": true, "empty": false, "name": 1}, {"focused": false, "empty": true, "name": 2}, {"focused": false, "empty": true, "name": 3}, {"focused": false, "empty": true, "name": 4}, {"focused": false, "empty": true, "name": 5}]'
+  "./scripts/workspace.py")
+(deflisten tasksjson :initial "[]" "./scripts/tasklist.py")
+(defpoll thour :initial "0" :interval "60s" "date +'%H'")
+(defpoll tmin :initial "0" :interval "60s" "date +'%M'")
+
+(defwindow bar
+  :geometry (geometry
+    :x "0%"
+    :y "0%"
+    :width "90"
+    :height "100%"
+    :anchor "center left")
+  :exclusive true
+  :monitor 0
+  (box 
+    :class "bg"
+    (barstruct)))
+
+(defwidget barstruct []
+  (box
+    :class "barm"
+    :orientation "v"
+    :space-evenly false
+    (image :image-width 80 :path "./assests/cat.png")
+    (centerbox 
+      :class "barclass"
+      :orientation "v"
+      :vexpand true
+      (top)
+      (middle)
+      (bottom))
+    (image :image-width 80 :path "./assests/paws.png")))
+
+(defwidget top []
+  (box
+    :orientation "v"
+    :space-evenly false 
+    :valign "start"
+    (workspaces)
+    (seperator)
+    (tasklist)
+    ))
+
+(defwidget middle []
+  (box
+    :orientation "v"
+    :space-evenly false 
+    :valign "center"
+    ))
+
+(defwidget bottom []
+  (box
+    :orientation "v"
+    :space-evenly false 
+    :valign "end"
+    (seperator)
+    (time)
+    (setting)
+    (butt)
+    ))
+
+(defwidget workspaces []
+  (box 
+    :class "workspaces widget"
+    :orientation "v"
+    :space-evenly true
+    :spacing 15
+    (for w in {workspacejson}
+      (button
+        :onclick "swaymsg -t command workspace number ${w.name}"
+        (image :image-width 40 :path {w.focused ? "./assests/pawRight.png" : "./assests/pawLeft.png"})))))
+
+(defwidget tasklist []
+  (box
+    :class "widget"
+    :orientation "v"
+    :space-evenly true 
+    (for task in {tasksjson}
+      (button 
+        :height 60
+        :class "taskicon"
+        :tooltip { task.name }
+        :onclick { task.pid != 'null' ? 'swaymsg "[pid=${task.pid}] focus"' : '(cd && gtk-launch ${task.app_id}) &' }
+        (image 
+          :image-width 40 
+          :path { task.path })))))
+
+(defwidget setting []
+  (box
+    :class "widget"
+    (button 
+      :height 45
+      :class "bubble"
+      (image 
+        :image-width 32 
+        :path "./assests/settings.svg"))))
+
+(defwidget time []
+  (box 
+    :class "widget"
+    (box
+      :class "time bubble"
+      :orientation "v"
+      (label :text thour)
+      (label :text tmin))))
+
+(defwidget butt []
+  (image
+    :class "widget"
+    :image-width 20
+    :path "./assests/x.svg"))
+
+(defwidget seperator []
+  (box 
+    :height 27
+    :class "sep"))
+
+(include "./titlebar.yuck")

@@ -1,0 +1,71 @@
+$bg_dark: #2d1f1d;
+$bg_dim: #412d2a;
+$bg_light: #986258;
+$mid_light: #E5D8D4;
+$fg_normal: #F2EBE9;
+
+* {
+    all: unset;
+    color: $fg_normal;
+    font-size: 16px;
+    font-family: "Comic Sans MS";
+}
+
+.barm {
+    margin: 10px 0px 10px 10px;
+}
+
+.barclass {
+    background-color: $bg_dark;
+}
+
+.widget {
+    margin: 5px;
+    padding: 5px;
+}
+
+.sep {
+    margin: 10px 15px;
+    background-color: $bg_light;
+    border-radius: 10px;
+}
+
+.taskicon {
+    border-radius: 10px;
+    background-color: $bg_light;
+    margin: 5px;
+}
+
+.bubble {
+    margin: -3px 5px;
+    background-color: $bg_light;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.time label {
+    font-size: 28px;
+}
+
+.bg {
+    background-color: $bg_light;
+}
+
+.window {
+    background-color: $bg_dark;
+    // border-radius: 5px;
+}
+
+.bubble {
+    border-radius: 15px;
+    color: $fg_normal;
+    background-color: $bg_dim;
+    border: 2px solid;
+    border-color: $bg_dark;
+    padding: 5px;
+    margin: 2px;
+}
+
+.bg {
+    background-color: $bg_light;
+}
