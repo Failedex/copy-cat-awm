@@ -70,7 +70,7 @@
     (for w in {workspacejson}
       (button
         :onclick "swaymsg -t command workspace number ${w.name}"
-        (image :image-width 40 :path {w.focused ? "./assests/pawRight.png" : "./assests/pawLeft.png"})))))
+        (image :image-width 40 :path {w.focused ? "./assests/pawRight.png" : "./assests/pawLeftb.png"})))))
 
 (defwidget tasklist []
   (box
@@ -92,7 +92,7 @@
     :class "widget"
     (button 
       :height 45
-      :class "bubble"
+      :class "bubblebar"
       (image 
         :image-width 32 
         :path "./assests/settings.svg"))))
@@ -101,7 +101,7 @@
   (box 
     :class "widget"
     (box
-      :class "time bubble"
+      :class "time bubblebar"
       :orientation "v"
       (label :text thour)
       (label :text tmin))))
