@@ -7,7 +7,7 @@ I made this because it was "possible".
 ![Copy Cat](https://github.com/Failedex/copy-cat-awm/blob/main/screenshot.png?raw=true)
 
 ## Running
-THIS IS NOT INCREDIBLY HACKY!!! I DON'T RECOMMEND DAILY DRIVING THIS!!!
+THIS IS INCREDIBLY HACKY!!! I DON'T RECOMMEND DAILY DRIVING THIS!!!
 
 But if you still want to try it out, here's how
 
