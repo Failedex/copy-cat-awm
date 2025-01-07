@@ -1,6 +1,6 @@
 # A copy of Cat awm in sway(fx) and eww
 
-I made this because it was "possible".
+I made this because it was "possible". (And to prove a point)
 
 [Original Cat awm](https://github.com/beckkake/cat-awm)
 
